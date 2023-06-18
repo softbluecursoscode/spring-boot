@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: realmeet
+  version: 1.0.0
+servers:
+- url: http://localhost:3000
+paths:
+  /rooms:
+    get:
+      operationId: listRooms
+      parameters:
+      - description: ID of the room
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error
+      summary: Return rooms
+      tags:
+      - room
+      x-accepts: application/json
+components:
+  schemas:
+    Room:
+      example:
+        name: name
+        id: 0
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+    Error:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      required:
+      - code
+      - message
+      type: object
+

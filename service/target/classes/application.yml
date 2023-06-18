@@ -1,0 +1,26 @@
+# =================================
+# = Server
+# =================================
+server:
+  port: 8080
+  servlet:
+    context-path: /v1
+
+# =================================
+# = Spring
+# =================================
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bluemeet?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: change-me
+    type: com.zaxxer.hikari.HikariDataSource
+
+# =================================
+# = Logging
+# =================================
+logging:
+  level:
+    org.springframework: ERROR
+    org.flywaydb: ERROR

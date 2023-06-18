@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>service</module>
+		<module>client</module>
+	</modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>br.com.sw2you</groupId>
+	<artifactId>realmeet</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>realmeet</name>
+	<description>Meet for real</description>
+
+	<properties>
+		<openapi-generator-maven-plugin.version>4.3.1</openapi-generator-maven-plugin.version>
+		<swagger-annotations.version>1.6.11</swagger-annotations.version>
+		<openapi-spec.file>${project.basedir}/../service/src/main/resources/api.yml</openapi-spec.file>
+		<openapi-spec.classpath>classpath:api.yml</openapi-spec.classpath>
+		<api.path>br.com.sw2you.realmeet</api.path>
+	</properties>
+
+	<dependencies>
+		<!-- Spring Boot - Web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/../service/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>api.yml</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+</project>
